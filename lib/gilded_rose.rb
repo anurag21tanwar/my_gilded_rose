@@ -10,7 +10,7 @@ def update_quality(items)
       when 'Backstage passes to a TAFKAL80ETC concert'
         Quality::BackStageItems.new.update(item)
       when 'Conjured'
-        # make conjured class
+        Quality::ConjuredItems.new.update(item)
       else
         Quality::NormalItems.new.update(item)
     end

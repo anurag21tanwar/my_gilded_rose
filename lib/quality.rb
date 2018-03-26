@@ -54,4 +54,10 @@ module Quality
       end
     end
   end
+
+  class ConjuredItems < Quality::Base
+    def set_quality(item)
+      item.sell_in <= 0 ? set(item, -4) : set(item, -2)
+    end
+  end
 end

@@ -200,6 +200,45 @@ describe '#update_quality' do
       end
     end
 
+    ######################################################################
+    # CONJURED ITEM ######################################################
+    ######################################################################
+    context "for conjured item" do
+      let(:name) { "Conjured" }
+      let(:initial_sell_in) { 5 }
+      let(:initial_quality) { 10 }
+
+      context "before sell date" do
+        it do
+          expect(item.sell_in).to eq(initial_sell_in - 1)
+          expect(item.quality).to eq(initial_quality - 2)
+        end
+      end
+
+      context "on zero sell date" do
+        let(:initial_sell_in) { 0 }
+        it do
+          expect(item.sell_in).to eq(initial_sell_in - 1)
+          expect(item.quality).to eq(initial_quality - 4)
+        end
+      end
+
+      context "after sell date" do
+        let(:initial_sell_in) { -1 }
+        it do
+          expect(item.sell_in).to eq(initial_sell_in - 1)
+          expect(item.quality).to eq(initial_quality - 4)
+        end
+      end
+
+      context "on zero quality" do
+        let(:initial_quality) { 0 }
+        it do
+          expect(item.sell_in).to eq(initial_sell_in - 1)
+          expect(item.quality).to eq(0)
+        end
+      end
+    end
   end
 
   context 'with multiple items' do
@@ -208,7 +247,8 @@ describe '#update_quality' do
           Item.new('NORMAL ITEM', 5, 10),
           Item.new('Sulfuras, Hand of Ragnaros', 5, 80),
           Item.new('Aged Brie', 5, 50),
-          Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 10)
+          Item.new('Backstage passes to a TAFKAL80ETC concert', 5, 10),
+          Item.new('Conjured', 5, 10)
       ]
     }
 
@@ -226,6 +266,9 @@ describe '#update_quality' do
 
       expect(items[3].sell_in).to eq(4)
       expect(items[3].quality).to eq(13)
+
+      expect(items[4].sell_in).to eq(4)
+      expect(items[4].quality).to eq(8)
     end
   end
 end
