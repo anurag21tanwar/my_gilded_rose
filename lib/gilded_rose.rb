@@ -4,7 +4,7 @@ def update_quality(items)
   items.each do |item|
     case item.name
       when 'Sulfuras, Hand of Ragnaros'
-        # make sulfuras class
+        Quality::SulfurasItems.new.update(item)
       when 'Aged Brie'
         # make aged brie class
       when 'Backstage passes to a TAFKAL80ETC concert'

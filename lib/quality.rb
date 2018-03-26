@@ -26,4 +26,12 @@ module Quality
       item.sell_in <= 0 ? set(item, -2) : set(item, -1)
     end
   end
+
+  class SulfurasItems < Quality::Base
+    def set_quality(item)
+    end
+
+    def set_sell_in(item)
+    end
+  end
 end
