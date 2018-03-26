@@ -40,4 +40,18 @@ module Quality
       item.sell_in <= 0 ? set(item, 2) : set(item, 1)
     end
   end
+
+  class BackStageItems < Quality::Base
+    def set_quality(item)
+      if item.sell_in > 10
+        set(item, 1)
+      elsif item.sell_in > 5
+        set(item, 2)
+      elsif item.sell_in > 0
+        set(item, 3)
+      else
+        item.quality = 0
+      end
+    end
+  end
 end

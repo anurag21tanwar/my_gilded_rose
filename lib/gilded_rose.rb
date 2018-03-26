@@ -8,7 +8,7 @@ def update_quality(items)
       when 'Aged Brie'
         Quality::AgedBrieItems.new.update(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
-        # make backstage class
+        Quality::BackStageItems.new.update(item)
       when 'Conjured'
         # make conjured class
       else
