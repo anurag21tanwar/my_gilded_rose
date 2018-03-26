@@ -34,4 +34,10 @@ module Quality
     def set_sell_in(item)
     end
   end
+
+  class AgedBrieItems < Quality::Base
+    def set_quality(item)
+      item.sell_in <= 0 ? set(item, 2) : set(item, 1)
+    end
+  end
 end

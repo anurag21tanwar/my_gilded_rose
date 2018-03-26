@@ -6,7 +6,7 @@ def update_quality(items)
       when 'Sulfuras, Hand of Ragnaros'
         Quality::SulfurasItems.new.update(item)
       when 'Aged Brie'
-        # make aged brie class
+        Quality::AgedBrieItems.new.update(item)
       when 'Backstage passes to a TAFKAL80ETC concert'
         # make backstage class
       when 'Conjured'
